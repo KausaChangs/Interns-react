@@ -1,5 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import { getAllJSDocTagsOfKind } from 'typescript';
+import { InternsDto } from './api/dto/intern.dto';
+import { InternsAPI } from './api/interns.api';
 import logo from './logo.svg';
+
 
 
 function add(a: number, b: number): number {
@@ -79,9 +83,7 @@ function MyForm() {
               </label>
             </div>
           </div>
-          
           <Button text='Submit intern' ourClick={() => submitDetails()} />
-          
         </form>
       </div>
     </div>
@@ -91,11 +93,45 @@ function MyForm() {
 
 
 function App() {
+  const [interns, setInterns] = useState<InternsDto[]>([])
+ 
+  useEffect(() => {
+     async function fetchAll() {
+       const resp = await InternsAPI.getAll();
+       
+       setInterns(resp);
+
+     }
+
+     fetchAll()
+  }, [])
+
   return (
     <div>
       <h1>Interns App UI</h1>
       <MyForm />
       {/* <Button text='Some thing'/> */}
+
+      <div className='App'>
+        <ul>
+        {
+            interns.map(intern =>{
+              return (//<li key={intern.id}>{intern.name}
+                      <li>
+                        Name: {intern.name}
+                      <br/>
+                        Email: {intern.email}
+                      <br/>
+                         Age: {intern.age}
+                      <br/>
+                         Salary: {intern.salary}
+                      </li>
+            )
+          })
+        }
+        </ul>
+
+      </div>
 
     </div>
   );
