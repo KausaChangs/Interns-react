@@ -1,0 +1,94 @@
+ 
+ *{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: 'popins', sans-serif;
+ }
+ 
+ #container{
+   position: absolute;
+   top: 30%;
+   left: 40%;
+   width: 288px;
+   height: 380px;
+   background: #fff;
+   box-shadow: 0 5px 25px rgba(0,0,0,.2);
+   border-radius: 7px;
+   display: grid;
+   place-items: center;
+   overflow: hidden;
+   /* font-family: Arial, Helvetica, sans-serif;
+   font-size: 24px;
+   margin: 25px;
+   width: 350px;
+   height: 200px;
+   outline: dashed 3px black; */
+
+ }
+
+   #container::before , #container::after{
+     content:"";
+     position: absolute;
+     width: 378px;
+     height: 378px;
+     background: #814c78;
+     border-radius: 45%;
+     z-index: -1;
+     opacity: .2;
+     animation: rotate-effect 8s linear-infinite;
+   }
+
+   #container::before{
+     bottom: -250px;
+     left: -20px;
+   }
+
+   #container::after{
+     bottom: -230px;
+     left: -20px;
+   }
+
+   @keyframes rotate-effect{
+     100%{
+       transform: rotate(360deg);
+     }
+   }
+
+   #form{
+     width: 130px;
+     height: 50px;
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     justify-content: space-evenly;
+     color: #f26e11;
+   }
+/* 
+   #input{
+     display: flex;
+     flex-direction: row-reverse;
+     margin: 5rem;
+   }
+
+   #input input{
+     width: 150px;
+     height: 30px;
+     outline: none;
+     border-radius: 0 1px 1px 0;
+     border: 1px solid #dbdbdb;
+     transition: .3s ease;
+     border-left: transparent;
+     padding-left: .3rem;
+   }
+   #input input::placeholder{
+     color: #dbdbdb;
+   }
+   #input label{
+     display: block;
+     width: 25px;
+     height: 20px;
+     border-radius: 3px 0 0 3px;
+     text-align: center;
+
+   } */
